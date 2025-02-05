@@ -1,16 +1,22 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { motion } from "framer-motion";
+import { IoMdClose } from "react-icons/io";
 
 export default function Navbar() {
+  const [val, setVal] = useState(false);
+
+  const handleMouseEnter = () => {
+    setVal(!val);
+  };
   return (
     <div className="w-full px-10 md:px-32 fixed z-10  py-9 mx-3 md:mx-2 mt-6 md:mt-10 ">
-      <div className="flex items-center justify-between space-x-6">
+      <div className="flex items-center gap-32 justify-between space-x-6">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2 ,   ease: "easeInOut"}}
+          transition={{ duration: 2, ease: "easeInOut" }}
         >
           <svg
             viewBox="0 0 95 25"
@@ -56,15 +62,48 @@ export default function Navbar() {
         <motion.span
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 2 , ease: "easeInOut"}}
+          transition={{ duration: 2, ease: "easeInOut" }}
         >
-          <IoMenu className="text-2xl text-white md:hidden" />
+          {val ? (
+            <IoMdClose
+              className="text-3xl text-white md:hidden"
+              onClick={handleMouseEnter}
+            />
+          ) : (
+            <IoMenu
+              className="text-3xl text-white md:hidden"
+              onClick={handleMouseEnter}
+            />
+          )}
         </motion.span>
+        {val ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 2 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+            className="links flex flex-col w-[30vh] rounded-2xl backdrop-blur-3xl shadow-2xl opacity-70 md:hidden p-3 space-y-6 absolute top-20 left-0 "
+          >
+            <Link href="#" className="text-lg font-regular text-zinc-200">
+              Home
+            </Link>
+            <Link href="#" className="text-lg font-regular text-zinc-200">
+              About
+            </Link>
+            <Link href="#" className="text-lg font-regular text-zinc-200">
+              News
+            </Link>
+            <Link href="#" className="text-lg font-regular text-zinc-200">
+              Contact
+            </Link>
+          </motion.div>
+        ) : (
+          <div></div>
+        )}
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 3 , ease: "easeInOut"}}
+          transition={{ duration: 3, ease: "easeInOut" }}
           className="links hidden md:flex space-x-6"
         >
           <Link href="#" className="text-lg font-regular text-white">
@@ -80,6 +119,8 @@ export default function Navbar() {
             Contact
           </Link>
         </motion.div>
+
+      
       </div>
     </div>
   );

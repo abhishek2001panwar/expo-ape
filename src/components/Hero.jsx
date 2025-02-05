@@ -33,7 +33,7 @@ export default function Hero() {
                     animate={{ rotate: 0, y: 0, opacity: 1 }}
                     transition={{
                       ease: Power4.easeInOut,
-                      duration: 2,
+                      duration: 1,
                       delay: index * 0.5,
                     }}
                     className="inline-block  origin-left"
@@ -62,16 +62,16 @@ export default function Hero() {
             </h2> */}
           </div>
 
-          <div className="mt-7 md:mt-20 ">
+          <div className="mt-7 md:mt-20 overflow-hidden ">
             {["Digital " , " Design" , " Experience"].map((item, index) => {
                 return (
                     <h1 key={index} className="text-6xl md:text-[30vh] font-light tracking-tighter">
                     <motion.span
-                        initial={{ rotate: 90, y: "100%", opacity: 0 }}
+                        initial={{ rotate: 90, y: "10%", opacity: 0 }}
                         animate={{ rotate: 0, y: 0, opacity: 1 }}
                         transition={{
                         ease: Power4.easeInOut,
-                        duration: 2,
+                        duration: .5,
                         delay:1+ index * 0.5,
                         }}
                         className="inline-block  origin-left"

@@ -15,7 +15,7 @@ export default function Services() {
             scrollTrigger:{
                 trigger: parent.current,
                 start: "0 0",
-               
+                end: "100% 0",
                 scrub: 1,
                 pin: true,
             },
